@@ -1,0 +1,71 @@
+body {
+ margin: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+ font-family: sans-serif;
+ background-color: #212121;
+}
+
+a {
+  padding: 20px 40px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+/* we need two more layers so we will use ::before and ::after pseudo elements */
+
+/* This is for layer 2 */
+a:before {
+  content: "Layer 2";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* at 270 degree on x-axis, we will make it  */
+  transform: rotateX(270deg);
+  /* we want origin of tranform from top and not the center  */
+  transform-origin: top;
+  transition: all 0.5s;
+}
+
+a:hover:before {
+  transform: rotateX(0deg); 
+}
+
+
+
+/* This is for layer 3 */
+a:after {
+  content: "Layer 3";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: bottom;
+  transform: rotateX(270deg);
+  transition: all 0.5s;
+  transition-delay: 0.25s;
+}
+
+a:hover:after {
+   transform: rotateX(0deg); 
+}
+
+
